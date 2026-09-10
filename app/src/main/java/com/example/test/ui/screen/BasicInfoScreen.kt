@@ -38,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 
@@ -97,19 +98,19 @@ fun BasicInfoScreen(onNavigateToContact:()-> Unit) {
                         text = "Memajukan UMKM Lokal",
                         modifier = Modifier.weight(2f)
                     )
-
-                    Spacer(modifier = Modifier.weight(1f))
-
-                    Button(
-                        onClick = onNavigateToContact,
-                        modifier = Modifier.fillMaxWidth().height(50.dp)
-                    ) {
-                        Text("Hubungi Kami", style = MaterialTheme.typography.labelLarge)
-                    }
-                    Spacer(modifier = Modifier.height(16.dp))
                 }
-
             }
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Button(
+                onClick = onNavigateToContact,
+                modifier = Modifier.fillMaxWidth().height(50.dp),
+            ) {
+                Text("Hubungi Kami", style = MaterialTheme.typography.labelLarge)
+            }
+
+            Spacer(modifier = Modifier.height(48.dp))
         }
     }
 }
