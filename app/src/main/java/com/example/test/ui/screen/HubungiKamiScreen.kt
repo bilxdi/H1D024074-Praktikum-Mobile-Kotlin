@@ -125,7 +125,7 @@ fun HubungiKamiScreen(navController: NavController) {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Icon(Icons.Default.Send, contentDescription = "Send")
+                    Icon(painterResource(R.drawable.send_icon), contentDescription = "Send")
                     Spacer(modifier = Modifier.padding(horizontal = 4.dp))
                     Text("Kirim Pesan", style = MaterialTheme.typography.labelLarge)
                 }
