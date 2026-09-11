@@ -143,7 +143,7 @@ fun BasicInfoScreen(onNavigateToContact:()-> Unit) {
                 Text("Hubungi Kami", style = MaterialTheme.typography.labelLarge)
             }
 
-            Spacer(modifier = Modifier.height(48.dp))
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
