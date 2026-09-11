@@ -68,11 +68,20 @@ fun BasicInfoScreen(onNavigateToContact:()-> Unit) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                text = "Aplikasi Jualan adalah platform yang mewadahi produk lokal UMKM di wilayah Kabupaten Purbalinggan, Jawa Tengah.",
-                fontSize = 16.sp,
-                modifier = Modifier.padding(horizontal = 16.dp)
-            )
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
+                )
+            ) {
+                Text(
+                    text = "Aplikasi Jualan adalah platform yang mewadahi produk lokal UMKM di wilayah Kabupaten Purbalinggan, Jawa Tengah.",
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+            }
 
             Spacer(modifier = Modifier.height(32.dp))
 
