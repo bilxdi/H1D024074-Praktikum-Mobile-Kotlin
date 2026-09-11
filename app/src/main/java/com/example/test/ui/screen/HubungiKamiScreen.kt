@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Scale
 import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -22,6 +23,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -70,7 +72,8 @@ fun HubungiKamiScreen(navController: NavController) {
                     }
                 }
             )
-        }
+        },
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ) {
         paddingValues ->
         Column(
@@ -92,7 +95,7 @@ fun HubungiKamiScreen(navController: NavController) {
                 value = emailText,
                 onValueChange = { emailText = it },
                 label = { Text("Email Anda") },
-                leadingIcon = { Icon(Icons.Default.Email, contentDescription = "Email") },
+                leadingIcon = { Icon(painterResource(R.drawable.mail_icon), contentDescription = "Email") },
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.medium
             )
