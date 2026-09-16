@@ -72,12 +72,12 @@ fun DaftarProductScreen() {
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+                    actionIconContentColor = MaterialTheme.colorScheme.onPrimary
                 ),
-                navigationIcon = {
-                    Icon(Icons.Default.ShoppingCart,
+                actions = {
+                    Icon(painter = painterResource(R.drawable.cart_icon),
                         contentDescription = "Cart Icon",
-                        modifier = Modifier.padding(horizontal = 12.dp)
+                        modifier = Modifier.padding(end = 12.dp)
                     )
                 }
             )
