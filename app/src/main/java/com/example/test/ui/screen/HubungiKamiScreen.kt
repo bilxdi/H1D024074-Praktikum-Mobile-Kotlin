@@ -12,6 +12,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -142,7 +145,7 @@ fun StatelessHubungiKami(
             label = { Text("Email Anda") },
             leadingIcon = {
                 Icon(
-                    painterResource(R.drawable.mail_icon),
+                    imageVector = Icons.Default.Email,
                     contentDescription = "Email")
             },
             isError = email.isNotEmpty()&&!isEmailValid,
@@ -222,7 +225,7 @@ fun StatelessHubungiKami(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.send_icon),
+                    imageVector = Icons.Default.Send,
                     contentDescription = "Send"
                 )
                 Spacer(modifier = Modifier.padding(horizontal = 4.dp))
