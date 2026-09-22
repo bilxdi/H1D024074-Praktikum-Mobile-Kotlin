@@ -192,6 +192,8 @@ fun StatelessHubungiKami(
             value = message,
             onValueChange = onMessageChange,
             label = { Text("Pesan") },
+            isError = message.isNotEmpty() && !isMessageValid,
+            supportingText = {if(message.isNotEmpty() && !isMessageValid) Text("Pesan minimal 10 karakter")},
             modifier = Modifier.fillMaxWidth().height(120.dp),
             shape = MaterialTheme.shapes.medium
         )
