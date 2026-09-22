@@ -63,7 +63,7 @@ fun DetailProductScreen(productId: Int, navController: NavController?) {
         quantity = quantity,
         onQuantityChange = { quantity = it },
         onBackClick = { navController?.popBackStack() },
-        onAddToCartClick = { Toast.makeText(context, "Dimasukkan: ${quantity}", Toast.LENGTH_SHORT).show() }
+        onAddToCartClick = { Toast.makeText(context, "Dimasukkan: $quantity", Toast.LENGTH_SHORT).show() }
     )
 }
 

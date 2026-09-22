@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.test.ui.screen.DaftarProductScreen
 import com.example.test.ui.screen.DetailProductScreen
+import com.example.test.ui.screen.HubungiKamiScreen
 import com.example.test.ui.theme.TestTheme
 
 class HomeActivity : ComponentActivity() {
@@ -35,6 +36,9 @@ class HomeActivity : ComponentActivity() {
                             productId = productId,
                             navController = navController
                         )
+                    }
+                    composable("hubungi kami") {
+                        HubungiKamiScreen(navController = navController)
                     }
                 }
             }

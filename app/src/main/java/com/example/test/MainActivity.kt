@@ -24,22 +24,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TestTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "basic_info") {
-                        composable("basic_info") {
-                            BasicInfoScreen(
-                                onNavigateToContact = { navController.navigate("form_screen") }
-                            )
-                        }
-                        composable("form_screen") {
-                            HubungiKamiScreen(navController = navController)
-                        }
-                    }
-                }
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    val navController = rememberNavController()
+//                    NavHost(navController = navController, startDestination = "basic_info") {
+//                        composable("basic_info") {
+//                            BasicInfoScreen(
+//                                onNavigateToContact = { navController.navigate("form_screen") }
+//                            )
+//                        }
+//                        composable("form_screen") {
+//                            HubungiKamiScreen(navController = navController)
+//                        }
+//                    }
+//                }
             }
         }
     }

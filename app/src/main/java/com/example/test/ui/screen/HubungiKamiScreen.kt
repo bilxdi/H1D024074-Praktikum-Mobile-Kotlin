@@ -47,12 +47,13 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HubungiKamiScreen(navController: NavController) {
+fun HubungiKamiScreen(navController: NavController?) {
     var emailText by remember { mutableStateOf("") }
     var messageText by remember { mutableStateOf("") }
     var problemType by rememberSaveable { mutableStateOf("Pilih Tipe Pesan") }
     var isAgreed by rememberSaveable { mutableStateOf(false) }
     var imageUri by remember { mutableStateOf<Uri?>(null) }
+
     val isEmailValid = emailText.contains("@") && emailText.isNotBlank()
     val isMessageValid = messageText.length >= 10
     val isFormValid = isEmailValid && isMessageValid && isAgreed && problemType != "Pilih Tipe Pesan"
@@ -80,8 +81,7 @@ fun HubungiKamiScreen(navController: NavController) {
             )
         },
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
-    ) {
-        paddingValues ->
+    ) { paddingValues ->
         StatelessHubungiKami(
             modifier = Modifier.padding(paddingValues),
             email = emailText,
@@ -117,7 +117,6 @@ fun StatelessHubungiKami(
     imageUri: Uri?, onImagePicked: (Uri?) -> Unit,
     isFormValid: Boolean, onSubmit: () -> Unit
 ) {
-    var emailText by remember { mutableStateOf("") }
     val photoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia(),
         onResult = { uri -> onImagePicked(uri) }
@@ -138,7 +137,7 @@ fun StatelessHubungiKami(
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
-            value = emailText,
+            value = email,
             onValueChange = onEmailChange,
             label = { Text("Email Anda") },
             leadingIcon = {
@@ -163,7 +162,7 @@ fun StatelessHubungiKami(
                 readOnly = true,
                 value = problemType,
                 onValueChange = { },
-                label = { Text("Pesan") },
+                label = { Text("Tipe Pesan") },
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                 colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors(),
                 modifier = Modifier.menuAnchor().fillMaxWidth()
@@ -183,6 +182,16 @@ fun StatelessHubungiKami(
                 }
             }
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        OutlinedTextField(
+            value = message,
+            onValueChange = onMessageChange,
+            label = { Text("Pesan") },
+            modifier = Modifier.fillMaxWidth().height(120.dp),
+            shape = MaterialTheme.shapes.medium
+        )
 
         if (imageUri != null) {
             Spacer(modifier = Modifier.height(8.dp))
@@ -213,7 +222,7 @@ fun StatelessHubungiKami(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Icon(
-                    painterResource(R.drawable.send_icon),
+                    painter = painterResource(id = R.drawable.send_icon),
                     contentDescription = "Send"
                 )
                 Spacer(modifier = Modifier.padding(horizontal = 4.dp))
