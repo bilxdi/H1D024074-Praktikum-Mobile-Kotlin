@@ -2,6 +2,7 @@ package com.example.test.ui.screen
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -197,6 +199,24 @@ fun StatelessHubungiKami(
             modifier = Modifier.fillMaxWidth().height(120.dp),
             shape = MaterialTheme.shapes.medium
         )
+
+        OutlinedButton(
+            onClick = {
+                photoPickerLauncher.launch(
+                    PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                )
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.check_icon),
+                contentDescription = "Check"
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text("Unggah Bukti (Screenshot / Foto)")
+        }
 
         if (imageUri != null) {
             Spacer(modifier = Modifier.height(8.dp))
