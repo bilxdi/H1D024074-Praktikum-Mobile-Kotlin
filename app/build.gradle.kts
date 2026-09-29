@@ -56,6 +56,11 @@ dependencies {
 
     implementation(libs.androidx.compose.material.icons.extended)
 
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
+    implementation(libs.coil.compose)
+
 //    implementation("androidx.navigation:navigation-fragment-ktx:2.10.0")
 //    implementation("androidx.navigation:navigation-ui-ktx:2.10.0")
 }
