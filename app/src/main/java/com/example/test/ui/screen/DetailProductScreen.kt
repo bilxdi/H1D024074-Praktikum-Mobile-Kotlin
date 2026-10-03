@@ -36,7 +36,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -149,6 +148,15 @@ fun StatelessDetailProduct(
 //                    .fillMaxWidth()
 //                    .height(280.dp))
                 Column(modifier = Modifier.padding(16.dp)) {
+                    Box(
+                        modifier = Modifier
+                            .padding(bottom = 8.dp)
+                            .background(color = Color(0xFFE8DDF8), RoundedCornerShape(4.dp))
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(product.category?.name ?: "", style = MaterialTheme.typography.labelLarge)
+                    }
                     Text(product.name, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
                     Text("Rp ${product.price}", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
                     Spacer(modifier = Modifier.height(16.dp))
@@ -192,6 +200,7 @@ fun StatelessDetailProduct(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(50.dp),
+                        shape = RoundedCornerShape(16.dp),
                         enabled = product.stock > 0 && quantity > 0
                     ) {
                         Text("Tambah ke keranjang")
