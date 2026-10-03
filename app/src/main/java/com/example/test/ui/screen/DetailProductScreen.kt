@@ -1,7 +1,6 @@
 package com.example.test.ui.screen
 
 import android.widget.Toast
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,14 +19,15 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -49,7 +50,6 @@ import com.example.test.data.model.Product
 import com.example.test.ui.viewmodel.ProductUiState
 import com.example.test.ui.viewmodel.ProductViewModel
 import com.example.test.util.JualanConstants.BASE_URL
-import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -106,6 +106,11 @@ fun StatelessDetailProduct(
         topBar = {
             TopAppBar(
                 title = { Text("Detail Produk") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+                ),
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(painterResource(id = R.drawable.back_icon), "Back")
@@ -135,8 +140,7 @@ fun StatelessDetailProduct(
                         modifier = Modifier
                             .fillMaxWidth()
                             .aspectRatio(1f)
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(androidx.compose.ui.graphics.Color.White),
+                            .background(Color.White),
                         contentScale = ContentScale.Fit
                     )
                 }
@@ -146,19 +150,28 @@ fun StatelessDetailProduct(
 //                    .height(280.dp))
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(product.name, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
-                    Text("Rp ${product.price}", style = MaterialTheme.typography.titleLarge)
+                    Text("Rp ${product.price}", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
                     Spacer(modifier = Modifier.height(16.dp))
                     Text("Deskripsi", fontWeight = FontWeight.Bold)
                     Text(product.description ?: "")
-                    Text("Stok: ${product.stock}")
+                    Text("Stok Tersedia: ${product.stock}", color = Color.DarkGray)
 
                     Spacer(modifier = Modifier.height(24.dp))
+
+                    HorizontalDivider(
+                        modifier = Modifier.fillMaxWidth(),
+                        thickness = 1.dp,
+                        color = Color.LightGray
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Jumlah Beli")
+                        Text("Jumlah Beli", fontWeight = FontWeight.Medium)
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             FilledTonalIconButton(
                                 onClick = { if (quantity > 1) onQuantityChange(quantity - 1) },
@@ -170,7 +183,7 @@ fun StatelessDetailProduct(
                             FilledTonalIconButton(
                                 onClick = { if (quantity < product.stock) onQuantityChange(quantity + 1) },
                                 enabled = quantity < product.stock
-                            ) { Text("+") }
+                            ) { Text("+", fontWeight = FontWeight.Bold) }
                         }
                     }
                     Spacer(modifier = Modifier.height(16.dp))
