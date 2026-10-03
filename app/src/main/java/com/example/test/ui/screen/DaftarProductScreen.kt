@@ -146,7 +146,7 @@ fun StatelessDaftarProduct(
                     actionIconContentColor = MaterialTheme.colorScheme.onPrimary
                 ),
                 actions = {
-                    Icon(imageVector = Icons.Default.ShoppingCart,
+                    Icon(painterResource(R.drawable.cart_icon),
                         contentDescription = "Cart Icon",
                         modifier = Modifier.padding(end = 12.dp)
                     )
@@ -206,13 +206,13 @@ fun StatelessDaftarProduct(
                 contentPadding = PaddingValues(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-//                items(DummyData.categories) { category ->
-//                    CategoryItem(
-//                        category = category,
-//                        isSelected = category.id == selectedCategoryId,
-//                        onCLick = { onCategorySelected(category.id) }
-//                    )
-//                }
+                items(categories) { category ->
+                    CategoryItem(
+                        category = category,
+                        isSelected = category.id == selectedCategoryId,
+                        onCLick = { onCategorySelected(category.id) }
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
