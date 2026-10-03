@@ -193,7 +193,8 @@ fun StatelessDaftarProduct(
                 onValueChange = onSearchQueryChange,
                 label = { Text("Cari Produk...") },
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
-                singleLine = true
+                singleLine = true,
+                leadingIcon = {}
             )
 
             Text(
